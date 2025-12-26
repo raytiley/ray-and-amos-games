@@ -84,8 +84,11 @@
 .card-front,
 .card-back {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   backface-visibility: hidden;
   border-radius: 12px;
   display: flex;
