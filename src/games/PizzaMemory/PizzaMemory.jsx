@@ -2,17 +2,32 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './PizzaMemory.css'
 
+// Import artwork
+import cardBack from './artwork/Pizza_Memory_pizzaback.png'
+import pizzaBase from './artwork/Pizza_Memory_pizzafront.png'
+import logo from './artwork/Pizza_Memory_logo.png'
+import pepperoniImg from './artwork/Pizza_Memory_pepperoni.png'
+import mushroomImg from './artwork/Pizza_Memory_mushroom.png'
+import oliveImg from './artwork/Pizza_Memory_olive.png'
+import bellpepperImg from './artwork/Pizza_Memory_bellpepper.png'
+import tomatoImg from './artwork/Pizza_Memory_tomato.png'
+import cheeseImg from './artwork/Pizza_Memory_cheese.png'
+import baconImg from './artwork/Pizza_Memory_bacon.png'
+import onionImg from './artwork/Pizza_Memory_onion.png'
+import pineappleImg from './artwork/Pizza_Memory_pineapple.png'
+import basilImg from './artwork/Pizza_Memory_basil.png'
+
 const PIZZA_TOPPINGS = [
-  { id: 'pepperoni', emoji: '🍕', name: 'Pepperoni' },
-  { id: 'mushroom', emoji: '🍄', name: 'Mushroom' },
-  { id: 'olive', emoji: '🫒', name: 'Olive' },
-  { id: 'pepper', emoji: '🫑', name: 'Bell Pepper' },
-  { id: 'tomato', emoji: '🍅', name: 'Tomato' },
-  { id: 'cheese', emoji: '🧀', name: 'Cheese' },
-  { id: 'bacon', emoji: '🥓', name: 'Bacon' },
-  { id: 'onion', emoji: '🧅', name: 'Onion' },
-  { id: 'pineapple', emoji: '🍍', name: 'Pineapple' },
-  { id: 'basil', emoji: '🌿', name: 'Basil' },
+  { id: 'pepperoni', image: pepperoniImg, name: 'Pepperoni' },
+  { id: 'mushroom', image: mushroomImg, name: 'Mushroom' },
+  { id: 'olive', image: oliveImg, name: 'Olive' },
+  { id: 'pepper', image: bellpepperImg, name: 'Bell Pepper' },
+  { id: 'tomato', image: tomatoImg, name: 'Tomato' },
+  { id: 'cheese', image: cheeseImg, name: 'Cheese' },
+  { id: 'bacon', image: baconImg, name: 'Bacon' },
+  { id: 'onion', image: onionImg, name: 'Onion' },
+  { id: 'pineapple', image: pineappleImg, name: 'Pineapple' },
+  { id: 'basil', image: basilImg, name: 'Basil' },
 ]
 
 function shuffleArray(array) {
@@ -122,7 +137,7 @@ function PizzaMemory() {
         <Link to="/" className="back-button">
           ← Back
         </Link>
-        <h1>🍕 Pizza Memory</h1>
+        <h1><img src={logo} alt="Pizza" className="header-logo" /> Pizza Memory</h1>
         <div className="stats">
           <span className="stat">Moves: {moves}</span>
           {bestScore && <span className="stat best">Best: {bestScore}</span>}
@@ -151,9 +166,14 @@ function PizzaMemory() {
             disabled={isCardMatched(card.cardId)}
           >
             <div className="card-inner">
-              <div className="card-front">🍕</div>
+              <div className="card-front">
+                <img src={cardBack} alt="Card back" className="card-image" />
+              </div>
               <div className="card-back">
-                <span className="topping-emoji">{card.emoji}</span>
+                <div className="pizza-stack">
+                  <img src={pizzaBase} alt="Pizza base" className="pizza-base" />
+                  <img src={card.image} alt={card.name} className="topping-image" />
+                </div>
                 <span className="topping-name">{card.name}</span>
               </div>
             </div>
