@@ -1,0 +1,88 @@
+/* Snowball Component Styles */
+
+.snowball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 80;
+}
+
+.snowball.player {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #e8f4ff 50%,
+    #c5dff5 100%
+  );
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.snowball.enemy {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff5f5 0%,
+    #ffe0e0 50%,
+    #ffcccc 100%
+  );
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.15),
+    0 0 10px rgba(255, 100, 100, 0.3);
+}
+
+.snowball-inner {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(255, 255, 255, 0.8),
+    transparent 60%
+  );
+}
+
+.snowball-shine {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Trail effect */
+.snowball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.3;
+  transform: translate(-50%, -50%) scale(0.8);
+  filter: blur(4px);
+}
+
+/* Animation for enemy snowballs */
+.snowball.enemy {
+  animation: enemyPulse 0.3s ease infinite alternate;
+}
+
+@keyframes enemyPulse {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.1);
+  }
+}

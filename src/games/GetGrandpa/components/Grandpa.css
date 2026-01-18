@@ -1,0 +1,212 @@
+/* Grandpa Component Styles */
+
+.grandpa {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  transition: left 1.8s ease-in-out, top 1.8s ease-in-out, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.grandpa-body {
+  position: relative;
+  width: 60px;
+  height: 100px;
+}
+
+/* Head */
+.grandpa-head {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 55px;
+  z-index: 10;
+}
+
+/* Grandpa face image */
+.grandpa-face-img {
+  width: 50px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #654321;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: filter 0.2s ease;
+  display: block;
+}
+
+.grandpa-face-img.hit {
+  filter: brightness(1.5) saturate(0.5);
+}
+
+/* Hit overlay text */
+.hit-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+  pointer-events: none;
+}
+
+/* Torso */
+.grandpa-torso {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 30px;
+  background: linear-gradient(180deg, #4a6741 0%, #3d5636 100%);
+  border-radius: 8px 8px 0 0;
+  z-index: 5;
+}
+
+/* Arms */
+.grandpa-arm {
+  position: absolute;
+  top: 42px;
+  width: 10px;
+  height: 25px;
+  background: linear-gradient(180deg, #4a6741 0%, #3d5636 100%);
+  border-radius: 5px;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+  z-index: 4;
+}
+
+.grandpa-arm-left {
+  left: 5px;
+  transform: rotate(-15deg);
+}
+
+.grandpa-arm-right {
+  right: 5px;
+  transform: rotate(15deg);
+}
+
+.grandpa-arm.throwing {
+  animation: throwArm 0.5s ease;
+}
+
+@keyframes throwArm {
+  0% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-60deg);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+/* Legs */
+.grandpa-legs {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 3;
+}
+
+.grandpa-leg {
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(180deg, #4a4a6a 0%, #3a3a5a 100%);
+  border-radius: 3px 3px 5px 5px;
+}
+
+.grandpa-leg.running {
+  animation: runLeg 0.3s ease infinite alternate;
+}
+
+.grandpa-leg.running:last-child {
+  animation-delay: 0.15s;
+}
+
+@keyframes runLeg {
+  0% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+/* State-specific styles */
+.grandpa-hiding {
+  opacity: 0.4;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.grandpa-peeking {
+  opacity: 0.9;
+  transform: translate(-50%, -50%) translateY(-10px);
+}
+
+.grandpa-running {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.grandpa-throwing {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.grandpa-hit {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  animation: hitShake 0.3s ease;
+}
+
+.grandpa-fleeing {
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+@keyframes hitShake {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(-15deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(10deg) scale(0.95);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-5deg) scale(1.05);
+  }
+}
+
+/* Hit effect */
+.hit-effect {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: hitPop 1s ease forwards;
+}
+
+@keyframes hitPop {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px) scale(1.5);
+  }
+}

@@ -1,0 +1,326 @@
+/* Get Grandpa - Snowball Fight Game */
+
+.get-grandpa-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.game-header h1 {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.back-button {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.4);
+}
+
+.game-stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.health {
+  display: flex;
+  gap: 4px;
+  font-size: 1.5rem;
+}
+
+.heart {
+  transition: transform 0.2s;
+}
+
+.heart.empty {
+  opacity: 0.5;
+}
+
+.score {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* Game Area */
+.game-area {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Sky background */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(
+    180deg,
+    #87ceeb 0%,
+    #b0e0e6 40%,
+    #e0f4ff 100%
+  );
+}
+
+/* Snow particles in sky */
+.sky::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent 50%),
+    radial-gradient(2px 2px at 40% 50%, white 50%, transparent 50%),
+    radial-gradient(1px 1px at 60% 20%, white 50%, transparent 50%),
+    radial-gradient(2px 2px at 80% 40%, white 50%, transparent 50%),
+    radial-gradient(1px 1px at 10% 60%, white 50%, transparent 50%),
+    radial-gradient(2px 2px at 90% 70%, white 50%, transparent 50%);
+  animation: snowfall 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+
+/* Ground - snowy yard */
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    #f0f8ff 0%,
+    #e6f2ff 30%,
+    #d4e9ff 100%
+  );
+}
+
+/* Snow texture on ground */
+.ground::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(ellipse 60px 10px at 15% 20%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(ellipse 80px 15px at 45% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(ellipse 50px 8px at 75% 30%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(ellipse 70px 12px at 30% 60%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(ellipse 90px 14px at 85% 70%, rgba(255,255,255,0.7), transparent);
+}
+
+/* Player */
+.player {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.player-body {
+  font-size: 3rem;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.player-label {
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+/* Crosshair */
+.crosshair {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 200;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 0, 0, 0.7);
+}
+
+.crosshair::before {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.crosshair::after {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Controls hint */
+.controls-hint {
+  margin-top: 20px;
+  color: #aaa;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.controls-hint p {
+  margin: 5px 0;
+}
+
+/* Game over overlay */
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.game-over-modal {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.game-over-modal h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin: 0 0 16px;
+}
+
+.game-over-modal p {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin: 0 0 24px;
+}
+
+.play-again-btn {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-again-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 108, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .game-header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .game-header h1 {
+    order: -1;
+    width: 100%;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .controls-hint {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
+}

@@ -10,6 +10,13 @@ const games = [
     image: pizzaLogo,
     path: '/pizza-memory',
   },
+  {
+    id: 'get-grandpa',
+    title: 'Get Grandpa!',
+    description: 'Throw snowballs at Grandpa before he gets you! A winter yard battle.',
+    emoji: '❄️',
+    path: '/get-grandpa',
+  },
 ]
 
 function Home() {

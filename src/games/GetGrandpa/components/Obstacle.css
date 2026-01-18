@@ -1,0 +1,354 @@
+/* Obstacle Component Styles */
+
+.obstacle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+}
+
+/* ==================== TREE ==================== */
+.tree {
+  position: relative;
+  width: 80px;
+  height: 150px;
+}
+
+.tree-layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.tree-layer-1 {
+  bottom: 90px;
+  border-width: 0 25px 40px 25px;
+  border-color: transparent transparent #2d5a27 transparent;
+}
+
+.tree-layer-1::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: -15px;
+  width: 30px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.tree-layer-2 {
+  bottom: 55px;
+  border-width: 0 35px 50px 35px;
+  border-color: transparent transparent #236b1f transparent;
+}
+
+.tree-layer-2::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -22px;
+  width: 44px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.tree-layer-3 {
+  bottom: 15px;
+  border-width: 0 45px 60px 45px;
+  border-color: transparent transparent #1a4d17 transparent;
+}
+
+.tree-layer-3::after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: -30px;
+  width: 60px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 25px;
+  background: linear-gradient(90deg, #5d4037, #8b6914, #5d4037);
+  border-radius: 0 0 3px 3px;
+}
+
+.tree-snow-base {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, #fff 0%, #e0e8f0 100%);
+  border-radius: 50%;
+}
+
+/* ==================== FENCE ==================== */
+.fence {
+  position: relative;
+  width: 120px;
+  height: 70px;
+}
+
+.fence-post {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 60px;
+  background: linear-gradient(90deg, #8b7355 0%, #a0896c 50%, #8b7355 100%);
+  border-radius: 2px 2px 0 0;
+}
+
+.fence-post:nth-child(1) {
+  left: 10px;
+}
+
+.fence-post:nth-child(2) {
+  left: 54px;
+}
+
+.fence-post:nth-child(3) {
+  left: 98px;
+}
+
+/* Pointed tops */
+.fence-post::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #a0896c;
+}
+
+.fence-rail {
+  position: absolute;
+  left: 10px;
+  width: 100px;
+  height: 10px;
+  background: linear-gradient(180deg, #9c8a70 0%, #8b7355 100%);
+  border-radius: 2px;
+}
+
+.fence-rail-top {
+  top: 10px;
+}
+
+.fence-rail-bottom {
+  top: 35px;
+}
+
+.fence-snow {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 110px;
+  height: 15px;
+  background: linear-gradient(180deg, #fff 0%, #e8f0f8 100%);
+  border-radius: 10px 10px 50% 50%;
+  opacity: 0.9;
+}
+
+/* ==================== SNOWMAN ==================== */
+.snowman {
+  position: relative;
+  width: 70px;
+  height: 100px;
+}
+
+.snowman-ball {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #f0f5fa 40%,
+    #dce8f0 100%
+  );
+  box-shadow:
+    inset -5px -5px 15px rgba(0, 0, 0, 0.1),
+    2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.snowman-bottom {
+  bottom: 0;
+  width: 60px;
+  height: 50px;
+}
+
+.snowman-middle {
+  bottom: 40px;
+  width: 45px;
+  height: 40px;
+}
+
+.snowman-head {
+  bottom: 72px;
+  width: 35px;
+  height: 32px;
+}
+
+/* Buttons on middle */
+.snowman-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.snowman-button:first-child {
+  top: 10px;
+}
+
+.snowman-button:last-child {
+  top: 22px;
+}
+
+/* Face */
+.snowman-eyes {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.snowman-eye {
+  width: 5px;
+  height: 5px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.snowman-nose {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 15px solid #ff7518;
+}
+
+.snowman-mouth {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  border: 2px solid #333;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Hat */
+.snowman-hat {
+  position: absolute;
+  bottom: 98px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #333 100%);
+  border-radius: 3px 3px 0 0;
+}
+
+.snowman-hat::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 40px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 2px;
+}
+
+.snowman-hat::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 30px;
+  height: 4px;
+  background: #c41e3a;
+}
+
+/* Arms (sticks) */
+.snowman-arm {
+  position: absolute;
+  top: 50px;
+  width: 30px;
+  height: 4px;
+  background: linear-gradient(90deg, #5d4037, #8b6914);
+  border-radius: 2px;
+}
+
+.snowman-arm-left {
+  left: -20px;
+  transform: rotate(-20deg);
+}
+
+.snowman-arm-right {
+  right: -20px;
+  transform: rotate(20deg);
+}
+
+/* Small twigs on arms */
+.snowman-arm::before,
+.snowman-arm::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 3px;
+  background: inherit;
+  border-radius: 2px;
+}
+
+.snowman-arm-left::before {
+  left: 0;
+  top: -8px;
+  transform: rotate(40deg);
+}
+
+.snowman-arm-left::after {
+  left: 5px;
+  top: -12px;
+  transform: rotate(20deg);
+}
+
+.snowman-arm-right::before {
+  right: 0;
+  top: -8px;
+  transform: rotate(-40deg);
+}
+
+.snowman-arm-right::after {
+  right: 5px;
+  top: -12px;
+  transform: rotate(-20deg);
+}
